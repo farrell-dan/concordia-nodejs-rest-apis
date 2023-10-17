@@ -3,7 +3,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const { getWordById, getRandomWord, guessLetter } = require("./handlers/hangmanHandlers");
-const { getAllClients, getClientById, postClientEmail, deleteClient} = require("./handlers/clientHandlers");
+const { getAllClients, getClientById, postClient, deleteClient} = require("./handlers/clientHandlers");
 
 express()
   .use(function (req, res, next) {
@@ -23,7 +23,7 @@ express()
 
   .get("/clients", getAllClients)
   .get("/clients/:clientId", getClientById)
-  .post("/clients/:clientId/email", postClientEmail)
+  .post("/clients", postClient)
   .delete("/clients/:clientId", deleteClient)
 
   .get("/hangman/word/:id", getWordById)

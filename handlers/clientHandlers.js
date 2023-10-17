@@ -3,43 +3,43 @@ const { clients } = require('../data/clients');
 
 // write your handlers here...
 
-const getAllClients = (req, res) => {
-  res.status(200).json(clients);
+const getAllClients = (request, response) => {
+  response.status(200).json( {data: clients});
 };
 
-const getClientById = (req, res) => {
-  const clientId = req.params.clientId;
-  const client = clients.find((c) => c.id === clientId);
+const getClientById = (request, response) => {
+  const clientId = request.params.clientId;
+  const client = clients.find((client) => client.id === clientId);
   if (!client) {
-    return res.status(404).json({ error: "Client not found" });
+    return response.status(404).json({ error: "Client not found" });
   }
-  res.status(200).json(client);
+  response.status(200).json( {data: client} );
 };
 
-const postClientEmail = (req, res) => {
-  const clientId = req.params.clientId;
-  const { email } = req.body;
-  const client = clients.find((index) => index.id === clientId);
-  if (!client) {
-    return res.status(404).json({ error: 'Client not found' });
-  }
-  client.email = email;
-  res.status(200).json(client);
+const postClient = (request, response) => {
+  const { name, email } = request.body;
+  const newClient = {
+    id: uuidv4(),
+    name,
+    email,
+  };
+  clients.push(newClient);
+  response.status(200).json({ data: newClient });
 };
 
-const deleteClient = (req, res) => {
-  const clientId = req.params.clientId;
-  const index = clients.findIndex((c) => c.id === clientId);
+const deleteClient = (request, response) => {
+  const clientId = request.params.clientId;
+  const index = clients.findIndex((client) => client.id === clientId);
   if (index === -1) {
-    return res.status(404).json({ error: "Client not found" });
+    return response.status(404).json({ error: "Client not found" });
   }
   clients.splice(index, 1);
-  res.status(204).send();
+  response.status(204).send();
 };
 
 module.exports = {
   getAllClients,
   getClientById,
-  postClientEmail,
+  postClient,
   deleteClient,
 };
