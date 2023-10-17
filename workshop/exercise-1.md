@@ -17,3 +17,26 @@ Write out each endpoint, its method, and brief description of waht it should do.
 _This activity is more about the discussion in how to best organize data endpoints. There will not be any coding._
 
 ## Your Answer
+
+| endpoint                  | method    | Description                    
+| --------------------------| ----------| ------------------------------
+| `/stock`                  | `GET`     | Get a list of items in stock
+| `/stock/{item_id}`        | `GET`     | Get the details of a specific item in the stock
+| `/stock`                  | `POST`    | Add a new item to the cafe's stock
+| `/stock/{item_id}`        | `PUT`     | Update the details of a specifc item in the stock
+| `/stock/{item_id}`        | `DELETE`  | Delete an item in the stock
+| `/customers`              | `GET`     | Get a list of customers at the cafe
+| `/customers/{item_id}`    | `GET`     | Get the details of a specific customer 
+| `/customers`              | `POST`    | Add a new customer to the customer list 
+| `/customers/{item_id}`    | `PUT`     | Update the details of a specific customer 
+| `/customers/{item_id}`    | `DELETE`  | Delete a specifc customer from the customers list
+| `/seating`                | `GET`     | Get information about seating in the cafe
+| `/seating/{item_id}`      | `GET`     | Get the details of a specific seating area
+| `/seating`                | `POST`    | Add a new seating area
+| `/seating/{item_id}`      | `PUT`     | Update the details of a specific area
+| `/seating/{item_id}`      | `DELETE`  | Delete a specific seating area
+| `/orders`                 | `GET`     | Get a list of all the orders
+| `/orders/{item_id}`       | `GET`     | Get the details of a specifc order
+| `/orders`                 | `POST`    | Add a new order
+| `/orders/{item_id}`       | `PUT`     | Update the details of an order
+| `/orders/{item_id}`       | `DELETE`  | Cancel a specific order
